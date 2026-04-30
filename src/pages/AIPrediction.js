@@ -32,7 +32,7 @@ const rowsPerPage = 7;
   setLoading(true);
 
   try {
-    const res = await API.post("/predict", []); // ✅ FIXED
+    const res = await API.get("/predict"); // ✅ FIXED
     console.log("AI RESPONSE:", res.data); // debug
 
     setData(res.data);
