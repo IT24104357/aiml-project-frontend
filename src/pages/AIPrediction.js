@@ -28,18 +28,20 @@ function AIPrediction() {
   const [page, setPage] = useState(1);
 const rowsPerPage = 7;
 
-  const predict = async () => {
-    setLoading(true);
+ const predict = async () => {
+  setLoading(true);
 
-    try {
-      const res = await API.get("/predict");
-      setData(res.data);
-    } catch (err) {
-      console.log(err);
-    }
+  try {
+    const res = await API.post("/predict", []); // ✅ FIXED
+    console.log("AI RESPONSE:", res.data); // debug
 
-    setLoading(false);
-  };
+    setData(res.data);
+  } catch (err) {
+    console.log(err);
+  }
+
+  setLoading(false);
+};
 
   const getDayName = (offset) => {
     const days = [
